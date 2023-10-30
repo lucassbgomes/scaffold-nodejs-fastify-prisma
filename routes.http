@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:3333
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVjYXMgR29tZXMgQWRtaW4iLCJyb2xlIjoiQURNSU4iLCJzdWIiOiJhODZjMTUzNi0xNmUxLTQxMTYtODllZC1hYmU3MWRhMDA1M2UiLCJpYXQiOjE2OTg2Nzg3OTEsImV4cCI6MTY5ODY3OTM5MX0.FMKPjWvTtZc7qFlUq_3qH0nJml8wZ7kkSOcdMq2WlVQ
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVjYXMgR29tZXMgQWRtaW4iLCJyb2xlIjoiQURNSU4iLCJzdWIiOiJhODZjMTUzNi0xNmUxLTQxMTYtODllZC1hYmU3MWRhMDA1M2UiLCJpYXQiOjE2OTg2Nzg3OTEsImV4cCI6MTY5OTI4MzU5MX0.C6VqtCXRUj3lpUYFIFTCcBBEewUhiAZn9C994k9wQDM
+
+###
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "first_name": "Teste",
+  "last_name": "Teste",
+  "user_name": "teste",
+  "email": "teste@gmail.com",
+  "password": "123456789",
+  "role": "USER"
+}
+
+###
+GET {{baseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/users/b7e38926-ef03-496b-a103-1959d2e41b78
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PATCH {{baseUrl}}/users/a86c1536-16e1-4116-89ed-abe71da0053e
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "first_name": "Lucas",
+  "user_name": "lucassbgomes",
+  "email": "lucas.sbgomes@gmail.com"
+}
+
+###
+DELETE {{baseUrl}}/users/ade09b7c-33eb-408e-a3ae-d133903b1a1e
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+POST {{baseUrl}}/session
+Content-Type: application/json
+
+{
+  "user_name": "lucagomes.admin",
+  "password": "123456789"
+}
+
+###
+PATCH {{baseUrl}}/token/refresh
+Cookie: refreshToken={{refreshToken}}
+
+###
+GET {{baseUrl}}/me
+Content-Type: application/json
+Authorization: Bearer {{token}}
