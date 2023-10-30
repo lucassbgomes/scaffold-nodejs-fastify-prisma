@@ -41,4 +41,4 @@ Your API will be available at [http://localhost:3333](http://localhost:3333)
 
 ### Project structure
 
-The scaffold is built as a Node.js API using Fastify and prisma, using the `src` folder for application codes, `prisma` for migrations and development database, and the `src/test` folder containing tests of applications.
+The scaffold is built as a Node.js API using Fastify and prisma, using the `src` folder for application codes, `prisma` for migrations and development database, and the `src/test` folder containing tests of applications. Using the `.github/workflows` folder for configuration CI/CD.
