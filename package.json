@@ -1,6 +1,6 @@
 {
   "name": "scaffold-nodejs-fastify-prisma",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -14,13 +14,13 @@
     "lint": "eslint . --ext .ts",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "test": "vitest run --dir src/test/use-cases",
-    "test:watch": "vitest --dir src/test/use-cases",
-    "test:create-prisma-env": "npm link ./prisma/vitest-environment-prisma",
+    "test": "vitest run test/core test/domain",
+    "test:watch": "vitest test/core test/domain",
+    "test:create-prisma-env": "npm link src/infra/database/prisma/vitest-environment-prisma",
     "test:install-prisma-env": "npm link vitest-environment-prisma",
     "pretest:e2e": "run-s test:create-prisma-env test:install-prisma-env",
-    "test:e2e": "vitest run --dir src/test/http",
-    "test:e2e:watch": "vitest --dir src/test/http",
+    "test:e2e": "vitest run --dir test/infra/http",
+    "test:e2e:watch": "vitest --dir test/infra/http",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },
@@ -29,6 +29,9 @@
     "fastify",
     "prisma"
   ],
+  "prisma": {
+    "schema": "src/infra/database/prisma/schema.prisma"
+  },
   "author": "Lucas Santa Bárbara Gomes",
   "license": "MIT",
   "dependencies": {
@@ -42,6 +45,7 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "8.2.0",
     "@types/bcryptjs": "2.4.5",
     "@types/node": "20.8.9",
     "@types/supertest": "2.0.15",

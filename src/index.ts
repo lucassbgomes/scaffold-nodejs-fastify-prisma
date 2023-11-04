@@ -1,5 +1,5 @@
-import { env } from '@/env';
-import { app } from '@/app';
+import { env } from '@/infra/env';
+import { app } from '@/infra/http/fastify/app';
 
 app
   .listen({
