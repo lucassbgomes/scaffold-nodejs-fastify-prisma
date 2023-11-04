@@ -7,10 +7,15 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@test/*": [
+        "./test/*"
       ]
     },
+    "types": [
+      "vitest/globals"
+    ],
     "outDir": "dist",
-    "rootDir": "src",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
@@ -19,7 +24,8 @@
     "sourceMap": true,
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "test"
   ],
   "exclude": [
     "node_modules",

@@ -5,22 +5,21 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
-    environmentMatchGlobs: [['src/test/http/**', 'prisma']],
+    globals: true,
+    environmentMatchGlobs: [['test/infra/http/**', 'prisma']],
     coverage: {
       exclude: [
         ...configDefaults.exclude,
-        'prisma/*',
-        'src/app.ts',
-        'src/@types',
-        'src/types',
-        'src/env',
-        'src/errors',
-        'src/lib/prisma.ts',
-        'src/utils/test/*',
-        'src/http/middlewares/*',
+        'src/**/prisma/**',
+        'src/**/types/**',
+        'src/**/env/**',
+        'src/infra/http/fastify/app.ts',
+        'src/**/errors/**',
+        'src/**/middlewares/**',
         'src/**/routes/**',
-        'src/use-cases/**/factories/**',
+        'src/**/factories/**',
       ],
     },
+    exclude: [...configDefaults.exclude, 'test/*'],
   },
 });
