@@ -16,6 +16,7 @@ export async function refreshTokenSessionUserController(
     {
       sign: {
         sub,
+        expiresIn: '15m',
       },
     },
   );

@@ -30,6 +30,7 @@ export async function createSessionUserController(
         {
           sign: {
             sub: id.toString(),
+            expiresIn: '15m',
           },
         },
       );
