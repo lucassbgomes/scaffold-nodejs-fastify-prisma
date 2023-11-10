@@ -1,4 +1,5 @@
 import request from 'supertest';
+import { randomUUID } from 'node:crypto';
 
 import { app } from '@/infra/http/fastify/app';
 
@@ -70,7 +71,7 @@ describe('Edit User Controller (e2e)', () => {
 
   it('should not be able to edit with inexistent user id', async () => {
     const response = await request(app.server)
-      .patch('/users/inexistent-id')
+      .patch(`/users/${randomUUID()}`)
       .set('Authorization', `Bearer ${tokenAll}`)
       .send({
         password: 'password_edited',

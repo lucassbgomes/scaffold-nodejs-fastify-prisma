@@ -10,18 +10,34 @@ export const createSessionUserSchema = {
       password: { type: 'string' },
     },
   },
+  example: {
+    user_name: 'test@test.com',
+    password: 'test123',
+  },
   response: {
-    200: { type: 'object', properties: { token: { type: 'string' } } },
-    404: { $ref: 'messageResponseSchema#' },
+    200: {
+      type: 'object',
+      description: 'Response success',
+      properties: { token: { type: 'string' } },
+    },
+    404: {
+      description: 'Response error',
+      $ref: 'messageResponseErrorSchema#',
+    },
   },
 };
 
 export const refreshTokenSessionUserSchema = {
   tags: ['Session'],
   summary: 'Refresh user session token',
-  description: 'Refresh user session token',
+  description:
+    "To be able to refresh the user's token, they must have logged in and their token has expired, the refresh token is in the session Cookie on the server.",
   response: {
-    200: { type: 'object', properties: { token: { type: 'string' } } },
-    404: { $ref: 'messageResponseSchema#' },
+    200: {
+      type: 'object',
+      description: 'Response success',
+      properties: { token: { type: 'string' } },
+    },
+    404: { description: 'Response error', $ref: 'messageResponseErrorSchema#' },
   },
 };

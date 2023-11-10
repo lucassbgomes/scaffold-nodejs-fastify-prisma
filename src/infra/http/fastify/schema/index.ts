@@ -1,1 +1,2 @@
-export { default as messageSchema } from './message.schema';
+export { default as messageResponseErrorSchema } from './message-response-error.schema';
+export { default as noContentSchema } from './no-content.schema';

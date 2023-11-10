@@ -2,19 +2,19 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 
 import { UserAlreadyExistsError } from '@/core/errors';
 
-import { parseCreateUserBodySchema } from '@/infra/types/zod/users';
+import { parseRegisterUserBodySchema } from '@/infra/types/zod/users';
 
-import { makeCreateUserUseCase } from '@/domain/website/application/use-cases/users/factories/make-create-user.usecase';
+import { makeRegisterUserUseCase } from '@/domain/website/application/use-cases/users/factories/make-register-user.usecase';
 
-export async function createUserController(
+export async function registerUserController(
   request: FastifyRequest,
   reply: FastifyReply,
 ) {
   try {
-    const createUserCase = makeCreateUserUseCase();
+    const registerUserCase = makeRegisterUserUseCase();
 
-    const result = await createUserCase.execute(
-      parseCreateUserBodySchema(request.body),
+    const result = await registerUserCase.execute(
+      parseRegisterUserBodySchema(request.body),
     );
 
     if (result.isRight()) {

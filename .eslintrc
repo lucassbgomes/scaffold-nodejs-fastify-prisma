@@ -1,23 +1,25 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "prettier",
-    "vitest"
-  ],
+  "plugins": ["@typescript-eslint", "prettier", "vitest"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:vitest-globals/recommended"
   ],
   "rules": {
-    "no-console": 1,
-    "prettier/prettier": 2
+    "prettier/prettier": 2,
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ]
   },
   "env": {
     "browser": true,
     "node": true,
-    "jest/globals": true
+    "vitest-globals/env": true
   }
 }

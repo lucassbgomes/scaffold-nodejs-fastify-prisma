@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { CreateUserUseCaseRequest } from '@/domain/website/application/use-cases/users/create-user.usecase';
+import { RegisterUserUseCaseRequest } from '@/domain/website/application/use-cases/users/register-user.usecase';
 import { UserEntityRole } from '@/domain/website/enterprise/entities/user/user.types';
 
 const userRole: z.ZodType<UserEntityRole> = z.enum([
@@ -10,7 +10,7 @@ const userRole: z.ZodType<UserEntityRole> = z.enum([
   'CLIENT',
 ]);
 
-const createUserSchema = z.object({
+const registerUserSchema = z.object({
   first_name: z.string(),
   last_name: z.string(),
   user_name: z.string(),
@@ -42,10 +42,10 @@ type EditUserRequest = z.infer<typeof editUserSchema>;
 export type UserParamsRequest = z.infer<typeof paramsUserSchema>;
 export type UserQueryParamsRequest = z.infer<typeof queryParamsUserSchema>;
 
-export const parseCreateUserBodySchema = (
+export const parseRegisterUserBodySchema = (
   body: unknown,
-): CreateUserUseCaseRequest => {
-  return createUserSchema.parse(body);
+): RegisterUserUseCaseRequest => {
+  return registerUserSchema.parse(body);
 };
 
 export const parseEditUserBodySchema = (body: unknown): EditUserRequest => {

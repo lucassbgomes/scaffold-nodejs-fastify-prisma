@@ -1,5 +1,6 @@
 import { env } from '@/infra/env';
 import { app } from '@/infra/http/fastify/app';
+import { log } from 'console';
 
 app
   .listen({
@@ -7,5 +8,5 @@ app
     port: env.PORT,
   })
   .then(() => {
-    console.log('🟢 HTTP app Running!');
+    log('🟢 HTTP app Running!');
   });

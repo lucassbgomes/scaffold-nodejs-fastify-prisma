@@ -5,7 +5,7 @@ import { UserEntity } from '@/domain/website/enterprise/entities';
 import { UserEntityRole } from '@/domain/website/enterprise/entities/user/user.types';
 import { UsersRepository } from '@/domain/website/application/repositories';
 
-export type CreateUserUseCaseRequest = {
+export type RegisterUserUseCaseRequest = {
   first_name: string;
   last_name: string;
   user_name: string;
@@ -14,17 +14,17 @@ export type CreateUserUseCaseRequest = {
   role?: UserEntityRole;
 };
 
-export type CreateUserUseCaseResponse = Either<
+export type RegisterUserUseCaseResponse = Either<
   UserAlreadyExistsError,
   { user: Omit<UserEntity, 'password'> }
 >;
 
-export class CreateUserUseCase {
+export class RegisterUserUseCase {
   constructor(private usersRepository: UsersRepository) {}
 
   async execute(
-    dataUser: CreateUserUseCaseRequest,
-  ): Promise<CreateUserUseCaseResponse> {
+    dataUser: RegisterUserUseCaseRequest,
+  ): Promise<RegisterUserUseCaseResponse> {
     const { email, user_name } = dataUser;
 
     const userWithSameEmail = await this.usersRepository.findByUnique({

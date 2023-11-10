@@ -1,4 +1,4 @@
-import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prisma-users.repository';
+import { PrismaUsersRepository } from '@/infra/database/prisma/repositories/users/prisma/prisma-users.repository';
 import { EditUserUseCase } from '../edit-user.usecase';
 
 export function makeEditUserUseCase() {

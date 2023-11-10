@@ -5,29 +5,18 @@
     "allowJs": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@test/*": [
-        "./test/*"
-      ]
+      "@/*": ["./src/*"],
+      "@test/*": ["./test/*"]
     },
-    "types": [
-      "vitest/globals"
-    ],
+    "types": ["vitest/globals"],
     "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "strict": true,
     "skipLibCheck": true,
-    "sourceMap": true,
+    "sourceMap": true
   },
-  "include": [
-    "src/**/*",
-    "test"
-  ],
-  "exclude": [
-    "node_modules",
-  ]
+  "include": ["src/**/*", "test", "prisma/vitest-environment-prisma"],
+  "exclude": ["node_modules"]
 }

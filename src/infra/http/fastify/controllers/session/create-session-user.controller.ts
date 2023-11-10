@@ -11,9 +11,8 @@ export async function createSessionUserController(
   try {
     const createSessionUserCase = makeCreateSessionUserUseCase();
 
-    const result = await createSessionUserCase.execute(
-      parseCreateSessionUserBodySchema(request.body),
-    );
+    const data = parseCreateSessionUserBodySchema(request.body);
+    const result = await createSessionUserCase.execute(data);
 
     if (result.isRight()) {
       const { user } = result.value;
