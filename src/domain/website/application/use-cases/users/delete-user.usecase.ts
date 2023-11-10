@@ -6,7 +6,6 @@ import {
   right,
 } from '@/core/errors';
 import { UsersRepository } from '@/domain/website/application/repositories';
-import { UserEntityRole } from '@/domain/website/enterprise/entities/user/user.types';
 
 export type DeleteUserUseCaseRequest = {
   userId: string;
@@ -14,7 +13,7 @@ export type DeleteUserUseCaseRequest = {
 
 export type DeleteUserUseCaseResponse = Either<
   ResourceNotFoundError | NotAllowedError,
-  {}
+  Record<never, never>
 >;
 
 export class DeleteUserUseCase {

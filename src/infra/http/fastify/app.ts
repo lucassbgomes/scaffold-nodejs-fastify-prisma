@@ -7,13 +7,22 @@ import { swaggerUi, swaggerUiOptions } from './plugin/swagger-ui';
 import fastifyJwt from '@fastify/jwt';
 import { env } from '@/infra/env';
 
-import { messageSchema } from './schema';
+import { messageResponseErrorSchema, noContentSchema } from './schema';
 
 import { sessionRoutes, usersRoutes } from './routes';
+import {
+  userResponseSchema,
+  userRoleSchema,
+  usersResponseSchema,
+} from './routes/users/users-schema.swagger';
 
 export const app = fastify();
 
-app.addSchema(messageSchema);
+app.addSchema(messageResponseErrorSchema);
+app.addSchema(noContentSchema);
+app.addSchema(userRoleSchema);
+app.addSchema(userResponseSchema);
+app.addSchema(usersResponseSchema);
 
 app.register(swagger, swaggerOptions);
 app.register(swaggerUi, swaggerUiOptions);

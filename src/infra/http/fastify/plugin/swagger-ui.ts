@@ -4,7 +4,7 @@ const swaggerUiOptions: FastifySwaggerUiOptions = {
   routePrefix: '/docs',
   uiConfig: {
     docExpansion: 'list',
-    deepLinking: false,
+    deepLinking: true,
   },
   uiHooks: {
     onRequest: function (_, __, next) {

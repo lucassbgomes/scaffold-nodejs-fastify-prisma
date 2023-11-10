@@ -30,4 +30,4 @@ jobs:
         env:
           JWT_SECRET: testing
           DATABASE_CLIENT: pg
-          DATABASE_URL: "postgresql://docker:docker@localhost:5432/scaffold?schema=public"
+          DATABASE_URL: 'postgresql://docker:docker@localhost:5432/scaffold?schema=public'

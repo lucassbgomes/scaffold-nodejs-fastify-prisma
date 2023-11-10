@@ -1,4 +1,4 @@
-import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prisma-users.repository';
+import { PrismaUsersRepository } from '@/infra/database/prisma/repositories/users/prisma/prisma-users.repository';
 import { CreateSessionUserUseCase } from '../create-session-user.usecase';
 
 export function makeCreateSessionUserUseCase() {

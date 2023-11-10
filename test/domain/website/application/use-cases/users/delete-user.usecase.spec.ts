@@ -20,14 +20,14 @@ describe('Delete User Use Case', () => {
     const password = '123456';
     const password_hash = await hash(password, 5);
 
-    const createUser = makeUser({
+    const registerUser = makeUser({
       password: password_hash,
       role: 'ADMIN',
     });
 
-    await usersRepository.create(createUser);
+    await usersRepository.create(registerUser);
 
-    const result = await sut.execute({ userId: createUser.id.toString() });
+    const result = await sut.execute({ userId: registerUser.id.toString() });
 
     expect(result.isRight()).toEqual(true);
   });
@@ -43,13 +43,13 @@ describe('Delete User Use Case', () => {
     const password = '123456';
     const password_hash = await hash(password, 5);
 
-    const createUser = makeUser({
+    const registerUser = makeUser({
       password: password_hash,
     });
 
-    await usersRepository.create(createUser);
+    await usersRepository.create(registerUser);
 
-    const result = await sut.execute({ userId: createUser.id.toString() });
+    const result = await sut.execute({ userId: registerUser.id.toString() });
 
     expect(result.isLeft()).toEqual(true);
     expect(result.value).toBeInstanceOf(NotAllowedError);

@@ -36,7 +36,8 @@ export async function editUserController(
     }
 
     const { message } = result.value;
-    let statusCode = result.value instanceof ResourceNotFoundError ? 400 : 403;
+    const statusCode =
+      result.value instanceof ResourceNotFoundError ? 400 : 403;
 
     return reply.status(statusCode).send({ message });
   } catch (error) {

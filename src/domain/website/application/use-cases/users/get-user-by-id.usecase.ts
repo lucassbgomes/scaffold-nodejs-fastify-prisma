@@ -1,7 +1,6 @@
 import { Either, ResourceNotFoundError, left, right } from '@/core/errors';
-import { UserEntity } from '@/domain/website/enterprise/entities';
 import { UsersRepository } from '@/domain/website/application/repositories';
-import { UserEntityResponseData } from '@/domain/website/enterprise/entities/user/user.types';
+import { UserEntity } from '@/domain/website/enterprise/entities';
 
 export type GetUserByIdUseCaseRequest = {
   userId: string;
@@ -9,7 +8,7 @@ export type GetUserByIdUseCaseRequest = {
 
 export type GetUserByIdUseCaseResponse = Either<
   ResourceNotFoundError,
-  { user: UserEntityResponseData }
+  { user: UserEntity }
 >;
 
 export class GetUserByIdUseCase {
@@ -18,23 +17,11 @@ export class GetUserByIdUseCase {
   async execute({
     userId,
   }: GetUserByIdUseCaseRequest): Promise<GetUserByIdUseCaseResponse> {
-    const userFound = await this.usersRepository.findById(userId);
+    const user = await this.usersRepository.findById(userId);
 
-    if (!userFound) {
+    if (!user) {
       return left(new ResourceNotFoundError());
     }
-
-    const user = {
-      id: userFound.id.toString(),
-      first_name: userFound.first_name,
-      last_name: userFound.last_name,
-      email: userFound.email,
-      user_name: userFound.user_name,
-      created_at: userFound.created_at,
-      updated_at: userFound.updated_at,
-      deleted_at: userFound.deleted_at,
-      role: userFound.role,
-    };
 
     return right({
       user,

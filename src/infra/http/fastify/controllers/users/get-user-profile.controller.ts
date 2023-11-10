@@ -1,6 +1,7 @@
 import { ResourceNotFoundError } from '@/core/errors';
 import { makeGetUserProfileUseCase } from '@/domain/website/application/use-cases/users/factories/make-get-user-profile-user.usecase';
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { UserPresenter } from '@/infra/http/fastify/presenters/users/user.presenter';
 
 export async function getUserProfileController(
   request: FastifyRequest,
@@ -15,7 +16,7 @@ export async function getUserProfileController(
 
     if (result.isRight()) {
       const { user } = result.value;
-      return reply.status(200).send({ user });
+      return reply.status(200).send({ user: UserPresenter.toJson(user) });
     }
 
     const { message } = result.value;

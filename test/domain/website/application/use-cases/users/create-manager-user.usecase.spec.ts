@@ -5,15 +5,15 @@ import { InMemoryUsersRepository } from '@test/domain/website/application/reposi
 
 import { UserAlreadyExistsError } from '@/core/errors';
 
-import { CreateUserUseCase } from '@/domain/website/application/use-cases/users/create-user.usecase';
+import { RegisterUserUseCase } from '@/domain/website/application/use-cases/users/register-user.usecase';
 
 let inMemoryUsersRepository: InMemoryUsersRepository;
-let sut: CreateUserUseCase;
+let sut: RegisterUserUseCase;
 
 describe('Create User Use Case', () => {
   beforeEach(() => {
     inMemoryUsersRepository = new InMemoryUsersRepository();
-    sut = new CreateUserUseCase(inMemoryUsersRepository);
+    sut = new RegisterUserUseCase(inMemoryUsersRepository);
   });
 
   it('should be able to create a user', async () => {

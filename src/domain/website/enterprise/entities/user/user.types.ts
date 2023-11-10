@@ -11,8 +11,8 @@ export type UserEntityData = UserEntityUniqueData & {
   password: string;
   role: UserEntityRole;
   created_at: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
+  updated_at?: Date | null;
+  deleted_at?: Date | null;
 };
 
 export type UserEntityProps = UserEntityData;
@@ -25,6 +25,6 @@ export type UserEntityResponseData = {
   email: string;
   role: UserEntityRole;
   created_at: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
+  updated_at?: Date | null;
+  deleted_at?: Date | null;
 };

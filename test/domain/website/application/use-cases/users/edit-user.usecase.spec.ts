@@ -15,14 +15,14 @@ describe('Edit User Use Case', () => {
   });
 
   it('should be able to edit a user', async () => {
-    const createUser = makeUser();
+    const registerUser = makeUser();
 
-    await usersRepository.create(createUser);
+    await usersRepository.create(registerUser);
 
     const result = await sut.execute({
-      loggedUserId: createUser.id.toString(),
-      loggedUserRole: createUser.role,
-      data: { id: createUser.id.toString(), first_name: 'Name Edited' },
+      loggedUserId: registerUser.id.toString(),
+      loggedUserRole: registerUser.role,
+      data: { id: registerUser.id.toString(), first_name: 'Name Edited' },
     });
 
     expect(result.isRight()).toEqual(true);
@@ -30,16 +30,16 @@ describe('Edit User Use Case', () => {
   });
 
   it('should be possible to edit email or username if the user is an administrator', async () => {
-    const createUser = makeUser({ role: 'ADMIN' });
-    await usersRepository.create(createUser);
+    const registerUser = makeUser({ role: 'ADMIN' });
+    await usersRepository.create(registerUser);
 
     const email = 'lucas@gomes.eti.br';
     const user_name = 'lucasgomes';
 
     const result = await sut.execute({
-      loggedUserId: createUser.id.toString(),
-      loggedUserRole: createUser.role,
-      data: { id: createUser.id.toString(), email, user_name },
+      loggedUserId: registerUser.id.toString(),
+      loggedUserRole: registerUser.role,
+      data: { id: registerUser.id.toString(), email, user_name },
     });
 
     expect(result.isRight()).toEqual(true);
@@ -51,15 +51,15 @@ describe('Edit User Use Case', () => {
     const email = 'lucas@gomes.eti.br';
     const user_name = 'lucasgomes';
 
-    const createUser = makeUser({ email, user_name });
+    const registerUser = makeUser({ email, user_name });
 
-    await usersRepository.create(createUser);
+    await usersRepository.create(registerUser);
 
     const result = await sut.execute({
-      loggedUserId: createUser.id.toString(),
-      loggedUserRole: createUser.role,
+      loggedUserId: registerUser.id.toString(),
+      loggedUserRole: registerUser.role,
       data: {
-        id: createUser.id.toString(),
+        id: registerUser.id.toString(),
         email: 'lucas@gmail.com',
         user_name: 'lucas.gomes',
       },

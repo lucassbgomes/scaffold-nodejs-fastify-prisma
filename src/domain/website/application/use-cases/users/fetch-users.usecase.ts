@@ -7,10 +7,7 @@ export type FetchUsersUseCaseRequest = {
   page: number;
 };
 
-export type FetchUsersUseCaseResponse = Either<
-  null,
-  { users: Omit<UserEntity, 'password'>[] }
->;
+export type FetchUsersUseCaseResponse = Either<null, { users: UserEntity[] }>;
 
 export class FetchUsersUseCase {
   constructor(private usersRepository: UsersRepository) {}
